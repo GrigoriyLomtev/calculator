@@ -1,0 +1,80 @@
+.wrapper {
+  background: rgb(255 255 255 / 20%);
+  border-radius: 18px;
+  height: 876px;
+  padding: 38px 35px 38px 27px;
+  width: 616px;
+}
+
+.block {
+  background: linear-gradient(160deg, #28518e, #3a77d1);
+  border-radius: 18px;
+  box-shadow:
+    0 8px 8px rgb(0 0 0 / 30%),
+    0 20px 30px rgb(0 0 0 / 30%);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px 44px 44px 50px;
+  position: relative;
+  width: 100%;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  height: calc(255px - 16px);
+  overflow: hidden;
+  padding-bottom: 18px;
+  position: relative;
+}
+
+.display::after {
+  background: rgb(255 255 255 / 20%);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+.expression {
+  margin-left: auto;
+  margin-top: auto;
+}
+
+.result {
+  font: var(--font-xl);
+  margin-left: auto;
+  margin-top: auto;
+}
+
+.buttons {
+  display: grid;
+  font: var(--font-l);
+  gap: 16px 20px;
+  grid-template-columns: repeat(4, 1fr);
+  padding-top: 37px;
+  place-items: center center;
+  position: relative;
+}
+
+@media (width <= 700px) {
+  .wrapper {
+    height: 100%;
+    padding: 0;
+    width: 100%;
+  }
+
+  .block {
+    box-shadow: none;
+  }
+
+  .buttons {
+    gap: 8px 10px;
+  }
+}

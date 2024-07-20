@@ -1,0 +1,26 @@
+.block {
+  background: none;
+  border: none;
+  border-radius: 100%;
+  color: var(--primary-color);
+  height: 80px;
+  outline: none;
+  width: 80px;
+}
+
+.block:hover {
+  cursor: pointer;
+}
+
+.primary:hover {
+  background: var(--secondary-bg-color);
+}
+
+.background {
+  background: var(--inverted-primary-bg-color);
+  color: var(--secondary-color);
+}
+
+.background:hover {
+  background: var(--inverted-primary-bg-color);
+}
