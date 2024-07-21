@@ -7,7 +7,7 @@ export const parseExpression = (expression: string): string[] => {
 
     if (/\d/.test(char) || char === ".") {
       numberBuffer.push(char);
-    } else if (/[+\-*/()%√]/.test(char)) {
+    } else if (/[+\-*/%√]/.test(char)) {
       if (numberBuffer.length) {
         tokens.push(numberBuffer.join(""));
         numberBuffer = [];

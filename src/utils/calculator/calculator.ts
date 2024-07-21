@@ -1,26 +1,17 @@
 import { parseExpression } from "../parser/parser";
+import { operators } from "../operations";
 
 export const infixToPostfix = (tokens: string[]): string[] => {
-  const precedence: { [key: string]: number } = {
-    "+": 1,
-    "-": 1,
-    "*": 2,
-    "/": 2,
-    "%": 2,
-    "√": 3,
-    "(": 0,
-    ")": 0,
-  };
   const outputQueue: string[] = [];
   const operatorStack: string[] = [];
 
   tokens.forEach((token) => {
     if (!isNaN(parseFloat(token)) || token === ".") {
       outputQueue.push(token);
-    } else if (/[+\-*/%√]/.test(token)) {
+    } else if (token in operators) {
       while (
         operatorStack.length &&
-        precedence[operatorStack[operatorStack.length - 1]] >= precedence[token]
+        operators[operatorStack[operatorStack.length - 1]] >= operators[token]
       ) {
         outputQueue.push(operatorStack.pop()!);
       }

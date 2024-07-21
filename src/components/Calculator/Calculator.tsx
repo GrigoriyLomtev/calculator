@@ -3,11 +3,11 @@ import styles from "./Calculator.module.css";
 import { classNames } from "../../utils/classNames/classNames";
 import { Button } from "../Button/Button";
 import { calculateExpression } from "../../utils/calculator/calculator";
+import { isOperator } from "../../utils/operations";
 
 interface CalculatorProps {
   className?: string;
 }
-const isOperator = (char: string) => /[+\-*/%]/.test(char);
 
 export const Calculator = memo((props: CalculatorProps) => {
   const { className } = props;
@@ -59,25 +59,18 @@ export const Calculator = memo((props: CalculatorProps) => {
       setResult("Error");
     }
   }, [expression]);
+
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
       const { key } = event;
 
       if (key >= "0" && key <= "9") {
         handleButtonClick(key);
-      } else if (
-        key === "+" ||
-        key === "-" ||
-        key === "*" ||
-        key === "/" ||
-        key === "%"
-      ) {
+      } else if (isOperator(key)) {
         handleButtonClick(key);
       } else if (key === "Enter") {
         handleCalculate();
-      } else if (key === "Backspace") {
-        handleClear();
-      } else if (key === "Escape") {
+      } else if (key === "Backspace" || key === "Escape") {
         handleClear();
       } else if (key === ".") {
         handleButtonClick(key);
